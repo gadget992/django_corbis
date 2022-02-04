@@ -1,8 +1,16 @@
 {% extends 'index/baseIndex.html' %}
 
 {% block content %}
-
-
+    <div class="flex justify-around bg-orange-400">
+        <div class="self-center">
+        {% if user.is_authenticated %}
+            <p class="text-xl font-bold text-center mt-5">Bienvenido <span class="italic">{{ user.get_username }}</span></p>
+            <a href="{% url 'logout'%}?next={{request.path}}" class="block text-center font-bold text-gray-600">Cerrar Sesión</a>
+            {% else %}
+            <a href="{% url 'login'%}?next={{request.path}}">Ingresar</a>
+        {% endif %} 
+        </div>
+    </div>
 
     <div class="md:grid md:grid-cols-2">
         
