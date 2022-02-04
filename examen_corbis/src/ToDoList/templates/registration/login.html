@@ -1,0 +1,37 @@
+{% extends 'registration/baseLogin.html' %}
+
+{% block content %}
+    {% if form.errors %}
+    <p>Contraseña o usuario incorrecto. Intentalo nuevamente</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+        <p>Accede con una cuenta valida.</p>
+        {% else %}
+        <p class="font-bold text-xl text-center mt-10 mb-5">Por favor ingresa con una cuenta</p>
+        {% endif %}
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}" class="p-5 bg-gray-200 w-1/4 mx-auto border rounded-lg">
+    {% csrf_token %}
+
+        <div class="my-2 ">
+            <td>{{ form.username.label_tag }}</td>
+            <td>{{ form.username }}</td>
+        </div>
+        <div class="my-2">
+            <td>{{ form.password.label_tag }}</td>
+            <td>{{ form.password }}</td>
+        </div>
+
+        <div >
+            <input type="submit" value="INGRESAR" class="py-2 px-3 block mx-auto bg-gray-400"/>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+    </form>
+
+
+    <p><a href="{% url 'registro' %}" class="block text-center mt-5 font-bold">Registrate</a></p>
+
+{% endblock %}

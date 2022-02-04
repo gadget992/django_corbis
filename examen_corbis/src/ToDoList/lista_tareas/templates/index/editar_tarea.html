@@ -1,0 +1,19 @@
+{% extends 'index/baseIndex.html' %}
+
+{% block content %}
+
+    <h1 class="text-center text-2xl font-bold m-5">EDITAR TAREA</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        {{form.nombre}}
+        {{form.descripcion}}
+        {{form.status}}
+        
+
+        <input type="submit" value="GUARDAR" class="mx-auto block py-2 px-4 bg-orange-400">
+    </form>
+    
+
+{% endblock %}
