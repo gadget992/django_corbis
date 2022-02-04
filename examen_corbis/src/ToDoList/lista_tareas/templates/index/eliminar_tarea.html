@@ -1,0 +1,20 @@
+{% extends 'index/baseIndex.html' %}
+
+{% block content %}
+
+    <h1 class="text-center text-2xl font-bold m-5">Eliminar tarea</h1>
+
+    <p class="text-center font-bold">Seguro que queres elminar la tarea <span class="uppercase text-xl italic">{{tarea}}</span> ??</p>
+    
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <input type="submit" value="ELIMINAR" onclick="alert('¿Segurísimo?')" class="block mx-auto text-center my-5 py-2 px-4 bg-orange-400 font-bold">
+    </form>
+
+    <a href="{% url 'index' %" class="block mx-auto py-2 px-4 bg-orange-400 w-1/4 my-5 font-bold text-center">Volver a inicio</a>
+
+    
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'index/baseIndex.html' %}
+
+{% block content %}
+
+
+
+    <div class="md:grid md:grid-cols-2">
+        
+        <form action="" method="POST">
+            <legend class="text-center font-bold text-xl my-5">Crear nueva tarea</legend>
+            {% csrf_token %}
+
+            {{form.nombre}}
+            {{form.descripcion}}
+            <p class="text-center my-4">{{form.status}}</p>
+            <p class="text-center my-4">{{form.vencimiento}}</p>
+            <input type="Submit" value="Crear" name="Crear tarea" class="mx-auto block py-2 px-4 bg-orange-400">
+        </form>
+
+        <div class="my-5  rounded-lg w-3/4 mx-auto ">
+            {% for tarea in tareas %}
+
+            <div class="bg-blue-200 my-4 border-4">
+                <div class="text-center py-4 px-4">
+                    <h1 class="font-bold uppercase">{{tarea.nombre}}</h1>
+                    <p class="italic">{{tarea.descripcion}}</p>
+                    <p class="italic font-bold text-right">Estado: {{tarea.status}}</p>
+                </div>
+                <div class="flex justify-center">
+                    <a href="{% url 'editar_tarea' tarea.id %}" class="py-1 px-2 mr-2 bg-amber-500">Editar</a>
+                    <a href="{% url 'eliminar_tarea' tarea.id %}" class="py-1 px-2 bg-amber-500">Borrar</a>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    
+
+    </div>
+
+{% endblock %}
