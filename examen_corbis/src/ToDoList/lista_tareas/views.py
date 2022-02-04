@@ -14,7 +14,19 @@ import datetime
 
 @login_required
 def index(request):
-    tareas = Tareas.objects.all()
+    tareas = Tareas.objects.filter(usuario = request.user)
+
+    busqueda = request.GET.get('buscar')
+    if busqueda:
+        print('busqueda')
+        tareas = tareas.filter(
+            Q(nombre__icontains = busqueda) |
+            Q(descripcion__icontains = busqueda)
+            ).distinct()
+    estado = request.GET.get('estado')
+    if estado:
+        tareas = tareas.filter(status = estado)
+        
     form = FormTarea()
 
     if request.method == 'POST':

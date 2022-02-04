@@ -4,15 +4,15 @@
 
     <h1 class="text-center text-2xl font-bold m-5">EDITAR TAREA</h1>
 
-    <form action="" method="POST">
+    <form action="" method="POST" class="bg-orange-400 sm:w-3/4 p-4 rounded-lg md:mx-auto">
         {% csrf_token %}
 
         {{form.nombre}}
         {{form.descripcion}}
-        {{form.status}}
+        <p class="block mx-auto text-center">{{form.status}}</p>
         
 
-        <input type="submit" value="GUARDAR" class="mx-auto block py-2 px-4 bg-orange-400">
+        <input type="submit" value="GUARDAR" class="mx-auto block mt-4 py-2 px-4 bg-orange-200 hover:bg-orange-600">
     </form>
     
 

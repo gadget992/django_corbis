@@ -13,20 +13,20 @@
         {% endif %}
     {% endif %}
 
-    <form method="post" action="{% url 'login' %}" class="p-5 bg-gray-200 w-1/4 mx-auto border rounded-lg">
+    <form method="post" action="{% url 'login' %}" class="sm:w-3/4 p-5 bg-gray-200 md:w-1/4 mx-auto border rounded-lg">
     {% csrf_token %}
 
         <div class="my-2 ">
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
+            <td ><p class="text-center my-2">{{ form.username.label_tag }}</p></td>
+            <td><p class="text-center my-2">{{ form.username }}</p></td>
         </div>
         <div class="my-2">
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
+            <td><p class="text-center my-2">{{ form.password.label_tag }}</p></td>
+            <td><p class="text-center my-2">{{ form.password }}</p></td>
         </div>
 
         <div >
-            <input type="submit" value="INGRESAR" class="py-2 px-3 block mx-auto bg-gray-400"/>
+            <input type="submit" value="INGRESAR" class="py-2 px-3 block mx-auto bg-gray-400 hover:bg-gray-200"/>
             <input type="hidden" name="next" value="{{ next }}" />
         </div>
     </form>
